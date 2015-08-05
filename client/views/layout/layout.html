@@ -1,0 +1,17 @@
+<template name="layout">
+  <header>
+    {{> header }}
+  </header>
+  <main>
+    {{# if isLoggedIn }}
+      <div class="no-select">
+        {{> yield }}
+      </div>
+    {{ else }}
+      {{> login }}
+    {{/ if }}
+  </main>
+  <footer>
+
+  </footer>
+</template>

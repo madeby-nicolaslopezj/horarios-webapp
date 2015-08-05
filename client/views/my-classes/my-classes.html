@@ -1,0 +1,17 @@
+<template name="myClasses">
+  <div class="container">
+    <h1 class="page-title">Mis Ramos</h1>
+    <div class="divider"></div>
+    {{# with me }}
+      {{# each courses }}
+        <p class="course-row">
+          {{ name }}<br>
+          {{# if section }}
+            <span class="grey-text">Sección {{ section }}</span>
+          {{/ if }}
+        </p>
+        <div class="divider"></div>
+      {{/ each }}
+    {{/ with }}
+  </div>
+</template>

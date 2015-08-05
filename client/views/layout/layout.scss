@@ -1,0 +1,33 @@
+.dropdown-content {
+  min-width: 190px;
+}
+
+h1.page-title {
+  font-size: 24px;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+}
+
+.no-select {
+  -moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+
+.ios-status-background {
+  position: fixed;
+  height: 10px;
+  top: 0;
+  width: 100%;
+}
+
+.ios.navbar-fixed {
+  nav {
+    top: 10px;
+  }
+}

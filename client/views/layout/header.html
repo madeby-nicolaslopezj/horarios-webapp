@@ -1,0 +1,45 @@
+<template name="header">
+  <ul id="admin-dropdown" class="dropdown-content">
+    {{# if isLoggedIn }}
+      <li><a href="{{ pathFor 'list' place='pregrado' }}">Horarios Pregrado</a></li>
+      <li><a href="{{ pathFor 'list' place='postgrado' }}">Horarios Postgrado</a></li>
+      <li><a href="{{ pathFor 'list' place='vina' }}">Horarios Viña</a></li>
+      <li class="divider"></li>
+      <li><a href="{{ pathFor 'myClasses' }}">Mis Ramos</a></li>
+      <li class="divider"></li>
+      <li><a class="logout-btn" href="#">Logout</a></li>
+    {{/ if }}
+  </ul>
+  <div class="navbar-fixed {{# if isIosWebapp }}ios{{/ if }}">
+    {{# if isIosWebapp }}
+    <div class="grey darken-3 ios-status-background">
+    </div>
+    {{/ if }}
+    <nav class="grey darken-3">
+     <div class="nav-wrapper container">
+       <a href="{{ pathFor 'home' }}" class="brand-logo">Horarios</a>
+       {{# if isLoggedIn }}
+       <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+       {{/ if }}
+       <ul id="nav-mobile" class="right hide-on-med-and-down">
+         {{# if isLoggedIn }}
+         <li><a class="dropdown-button" href="#!" data-activates="admin-dropdown"><i class="material-icons">more_vert</i></a></li>
+         {{/ if }}
+       </ul>
+       <ul class="side-nav" id="mobile-nav">
+         {{# if isLoggedIn }}
+           <li><a href="{{ pathFor 'home' }}">Mis Horarios</a></li>
+           <li class="divider"></li>
+           <li><a href="{{ pathFor 'list' place='pregrado' }}">Horarios Pregrado</a></li>
+           <li><a href="{{ pathFor 'list' place='postgrado' }}">Horarios Postgrado</a></li>
+           <li><a href="{{ pathFor 'list' place='vina' }}">Horarios Viña</a></li>
+           <li class="divider"></li>
+           <li><a href="{{ pathFor 'myClasses' }}">Mis Ramos</a></li>
+           <li class="divider"></li>
+           <li><a class="logout-btn" href="#">Logout</a></li>
+         {{/ if }}
+        </ul>
+     </div>
+   </nav>
+  </div>
+</template>

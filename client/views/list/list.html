@@ -1,0 +1,35 @@
+<template name="list">
+  <br>
+  <div class="container">
+    {{# each items }}
+      <div class="list-item pointer">
+        {{# if type }}
+          <p>
+            <span class="type red-text">{{ type }}</span>
+          </p>
+        {{/ if }}
+        <p class="name">
+          <span class="right"><b>{{ room }}</b></span>
+          <b>{{ name }}</b>
+        </p>
+        <p class="section-teacher">
+          <span class="section">{{# if section }}Sección {{ section }}{{/ if }}</span>
+          {{# if teacher }}
+            {{# if section }}
+             -
+            {{/ if }}
+          {{/ if }}
+          <span class="teacher">{{ teacher }}</span>
+        </p>
+        <p class="date">
+          {{# if suspended }}
+            <span class="suspended red-text">Suspendida</span>
+          {{ else }}
+            {{ date }}
+          {{/ if }}
+        </p>
+      </div>
+      <div class="divider"></div>
+    {{/ each }}
+  </div>
+</template>
