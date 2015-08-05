@@ -12,10 +12,17 @@ Template.list.helpers({
 
 Template.list.events({
   'click .list-item': function(event, template) {
+    var self = this;
     if (!this.name) return;
     if (confirm('¿Quieres agregar ' + this.name + ' a tus ramos?')) {
       api.nonReactive('user/courses/add', { name: this.name, section: this.section || undefined }, function(error, result) {
-        console.log(error, result);
+        if (!result.success) {
+          _.each(result.errors, function(error) {
+            Materialize.toast(error, 4000);
+          });
+        } else {
+          Materialize.toast(self.name + ' se agregó a tus ramos', 4000);
+        }
       });
     }
   }

@@ -26,10 +26,12 @@ api.allocCall = function(identifier, method, params) {
 api.refreshCall = function(identifier) {
   if (!this.calls[identifier]) return;
   var space = this.calls[identifier];
+  Session.set('isLoading', true);
   Meteor.call('api', space.method, space.params, function(error, response) {
     space.value = response;
     space.virgin = false;
     space.dep.changed();
+    Session.set('isLoading', false);
   });
 };
 
@@ -45,5 +47,13 @@ api.call = function(identifier, method, params) {
 
 api.nonReactive = function(method, params, callback) {
   params = api.cleanParams(params);
-  Meteor.call('api', method, params, callback);
+  Session.set('isLoading', true);
+  Meteor.call('api', method, params, function(error, response) {
+    Session.set('isLoading', false);
+    callback(error, response);
+  });
 }
+
+Template.registerHelper('isLoading', function() {
+  return Session.get('isLoading');
+})

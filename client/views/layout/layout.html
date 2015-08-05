@@ -3,6 +3,9 @@
     {{> header }}
   </header>
   <main>
+    {{# if isLoading }}
+      {{> loading }}
+    {{/ if }}
     {{# if isLoggedIn }}
       <div class="no-select">
         {{> yield }}
