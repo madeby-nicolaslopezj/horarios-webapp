@@ -1,21 +1,17 @@
-var tokenDep = new Tracker.Dependency();
-var userDataDep = new Tracker.Dependency();
+var storedToken = new StoredVar('storedToken');
+var storedUserData = new StoredVar('storedUserData');
 
 getUserToken = function() {
-  tokenDep.depend();
-  return Meteor.cookie.get('user_token');
+  return storedToken.get();
 };
 
 getUserData = function() {
-  userDataDep.depend();
-  return JSON.parse(Meteor.cookie.get('user_data') || '');
+  return JSON.parse(storedUserData.get() || '');
 };
 
 saveUserData = function(hash, data) {
-  Meteor.cookie.set('user_token', hash, 31536000);
-  Meteor.cookie.set('user_data', JSON.stringify(data), 31536000);
-  tokenDep.changed();
-  userDataDep.changed();
+  storedToken.set(hash);
+  storedUserData.set(JSON.stringify(data));
 };
 
 logout = function() {

@@ -8,8 +8,8 @@ meteor-platform
 iron:router
 materialize:materialize
 http
-ostrio:cookies
 fourseven:scss
 momentjs:moment
 zimme:active-route
 appcache
+dispatch:stored-var
