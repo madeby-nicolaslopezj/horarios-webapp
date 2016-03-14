@@ -27,7 +27,9 @@ api.refreshCall = function(identifier) {
   if (!this.calls[identifier]) return;
   var space = this.calls[identifier];
   Session.set('isLoading', true);
-  Meteor.call('api', space.method, space.params, function(error, response) {
+  ApiGet(space.method, space.params)
+  .then((response) => {
+    console.log(response);
     space.value = response;
     space.virgin = false;
     space.dep.changed();
@@ -48,9 +50,10 @@ api.call = function(identifier, method, params) {
 api.nonReactive = function(method, params, callback) {
   params = api.cleanParams(params);
   Session.set('isLoading', true);
-  Meteor.call('api', method, params, function(error, response) {
+  ApiGet(method, params)
+  .then((response) => {
     Session.set('isLoading', false);
-    callback(error, response);
+    callback(null, response);
   });
 }
 

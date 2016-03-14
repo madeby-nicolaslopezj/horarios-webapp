@@ -1,2 +1,4 @@
 .DS_Store
 lib/env.js
+mup.json
+settings.json

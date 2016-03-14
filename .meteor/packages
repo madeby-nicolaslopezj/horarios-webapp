@@ -4,12 +4,26 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
 iron:router
-materialize:materialize
 http
 fourseven:scss
 momentjs:moment
 zimme:active-route
-appcache
 dispatch:stored-var
+timbrandin:fetch
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
+ecmascript
+es5-shim
